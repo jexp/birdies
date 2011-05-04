@@ -9,6 +9,7 @@ require 'feed_tools'
 # ["from_user_id_str", "profile_image_url", "created_at", "from_user", "id_str", "metadata", "to_user_id", "text", "id", "from_user_id", "geo", "iso_language_code", "to_user_id_str", "source"]
 # search.hashtag("jaxcon").result_type("recent").per_page(15).collect
 # search.containing("marry me").to("justinbieber").result_type("recent").per_page(3).each
+
 module Neography
   class Node 
     class << self
@@ -56,17 +57,17 @@ neo = Rest.new
 #@tweets = {}
 
 def add_tweet(item)
-  id = item.guid.gsub(/http:\/\/twitter.com\/(.+)\/statuses\/(.+)/,'\1:\2')
-  puts "Processing #{item.title}"
+  id = item.id
+  puts "Processing #{item.text}"
   if Node.find("tweets",:id, id)
     puts "Duplicate"
     return
   end
-  text = item.title
+  text = item.text
   clean = text.gsub(/(@\w+|https?\S+|#\w+)/,"")
-  tweet = Node.obtain({ :id => id, :date => item.published, :text => clean, :raw => text, :link => item.link }, {"tweets" => [:id]})
+  tweet = Node.obtain({ :id => id, :date => item.created_at, :text => clean, :raw => text, :link => item.link }, {"tweets" => [:id]})
 
-  twid = item.author.email.gsub(/@twitter.com/,"")
+  twid = item.from_user
   user = Node.obtain({ :twid => twid, :name => item.author.name }, {"users" => [:twid]})
   user.name = item.author.name unless user.name
   @users.outgoing(:USER) << user if @users.rels(:USER).outgoing.to_other(user).empty?
