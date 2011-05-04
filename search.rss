@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:google="http://base.google.com/ns/1.0" xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:twitter="http://api.twitter.com/">
+  <channel>
+    <title>#neo4j - Twitter Search</title>
+    <description>#neo4j - Twitter Search</description>
+    <link>http://search.twitter.com/search?q=%23neo4j</link>
+    <twitter:refresh_url>http://search.twitter.com/search.rss?q=%23neo4j&amp;since_id=65611603759996928</twitter:refresh_url>
+    <pubDate>Tue, 03 May 2011 23:55:19 +0000</pubDate>
+    <openSearch:itemsPerPage>15</openSearch:itemsPerPage>
+    <item>
+      <title>@porcelli &#233; uma app simples, com diversas funcoes &quot;sociais&quot;. Cabe usar o #neo4j para estas funcoes (mas somente p/ elas, na minha opiniao)</title>
+      <link>http://twitter.com/hannelita/statuses/65565127734341632</link>
+      <description>&lt;a href=&quot;http://twitter.com/porcelli&quot;&gt;@porcelli&lt;/a&gt; &#233; uma app simples, com diversas funcoes &amp;quot;sociais&amp;quot;. Cabe usar o &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt; para estas funcoes (mas somente p/ elas, na minha opiniao)</description>
+      <pubDate>Tue, 03 May 2011 23:55:19 +0000</pubDate>
+      <guid>http://twitter.com/hannelita/statuses/65565127734341632</guid>
+      <author>hannelita@twitter.com (Hanneli Tavante)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a2.twimg.com/profile_images/1335024626/Photo_on_2011-05-01_at_21.54_normal.jpg"/>
+      <google:image_link>http://a2.twimg.com/profile_images/1335024626/Photo_on_2011-05-01_at_21.54_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>RT @hannelita: Alguem a&#237; usando #neo4j c/ #devise?? #askTwitter</title>
+      <link>http://twitter.com/dexfs/statuses/65563018972512257</link>
+      <description>RT &lt;a href=&quot;http://twitter.com/hannelita&quot;&gt;@hannelita&lt;/a&gt;: Alguem a&#237; usando &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt; c/ &lt;a href=&quot;http://search.twitter.com/search?q=%23devise&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#devise');&quot;&gt;#devise&lt;/a&gt;?? &lt;a href=&quot;http://search.twitter.com/search?q=%23askTwitter&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#askTwitter');&quot;&gt;#askTwitter&lt;/a&gt;</description>
+      <pubDate>Tue, 03 May 2011 23:46:56 +0000</pubDate>
+      <guid>http://twitter.com/dexfs/statuses/65563018972512257</guid>
+      <author>dexfs@twitter.com (Andre Santos)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a2.twimg.com/profile_images/1307436981/ryuki_normal.jpg"/>
+      <google:image_link>http://a2.twimg.com/profile_images/1307436981/ryuki_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>Alguem a&#237; usando #neo4j c/ #devise?? #askTwitter</title>
+      <link>http://twitter.com/hannelita/statuses/65562592806055937</link>
+      <description>Alguem a&#237; usando &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt; c/ &lt;a href=&quot;http://search.twitter.com/search?q=%23devise&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#devise');&quot;&gt;#devise&lt;/a&gt;?? &lt;a href=&quot;http://search.twitter.com/search?q=%23askTwitter&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#askTwitter');&quot;&gt;#askTwitter&lt;/a&gt;</description>
+      <pubDate>Tue, 03 May 2011 23:45:14 +0000</pubDate>
+      <guid>http://twitter.com/hannelita/statuses/65562592806055937</guid>
+      <author>hannelita@twitter.com (Hanneli Tavante)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a2.twimg.com/profile_images/1335024626/Photo_on_2011-05-01_at_21.54_normal.jpg"/>
+      <google:image_link>http://a2.twimg.com/profile_images/1335024626/Photo_on_2011-05-01_at_21.54_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>RT @andres_taylor: I love the eurekas I keep getting while working on a query language for #neo4j</title>
+      <link>http://twitter.com/ahzf/statuses/65514806538551297</link>
+      <description>RT &lt;a href=&quot;http://twitter.com/andres_taylor&quot;&gt;@andres_taylor&lt;/a&gt;: I love the eurekas I keep getting while working on a query language for &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt;</description>
+      <pubDate>Tue, 03 May 2011 20:35:21 +0000</pubDate>
+      <guid>http://twitter.com/ahzf/statuses/65514806538551297</guid>
+      <author>ahzf@twitter.com (Achim Friedland)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a1.twimg.com/profile_images/438516563/ahzf-simpson3-01_copy_normal.jpg"/>
+      <google:image_link>http://a1.twimg.com/profile_images/438516563/ahzf-simpson3-01_copy_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>RT @andres_taylor: I love the eurekas I keep getting while working on a query language for #neo4j</title>
+      <link>http://twitter.com/emileifrem/statuses/65503380403007488</link>
+      <description>RT &lt;a href=&quot;http://twitter.com/andres_taylor&quot;&gt;@andres_taylor&lt;/a&gt;: I love the eurekas I keep getting while working on a query language for &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt;</description>
+      <pubDate>Tue, 03 May 2011 19:49:57 +0000</pubDate>
+      <guid>http://twitter.com/emileifrem/statuses/65503380403007488</guid>
+      <author>emileifrem@twitter.com (Emil Eifrem)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a0.twimg.com/profile_images/53878772/emil-profile-arlanda-2007-08-18-cropped_normal.jpg"/>
+      <google:image_link>http://a0.twimg.com/profile_images/53878772/emil-profile-arlanda-2007-08-18-cropped_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>I love the eurekas I keep getting while working on a query language for #neo4j</title>
+      <link>http://twitter.com/andres_taylor/statuses/65501885683077121</link>
+      <description>I love the eurekas I keep getting while working on a query language for &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt;</description>
+      <pubDate>Tue, 03 May 2011 19:44:01 +0000</pubDate>
+      <guid>http://twitter.com/andres_taylor/statuses/65501885683077121</guid>
+      <author>andres_taylor@twitter.com (Andr&#233;s Taylor)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a2.twimg.com/profile_images/286650674/andres_normal.jpg"/>
+      <google:image_link>http://a2.twimg.com/profile_images/286650674/andres_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>@oxodesign how is your latency and have you tried it single or multi-threaded? #neo4j REST API</title>
+      <link>http://twitter.com/mesirii/statuses/65415349511786496</link>
+      <description>&lt;a href=&quot;http://twitter.com/oxodesign&quot;&gt;@oxodesign&lt;/a&gt; how is your latency and have you tried it single or multi-threaded? &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt; REST API</description>
+      <pubDate>Tue, 03 May 2011 14:00:09 +0000</pubDate>
+      <guid>http://twitter.com/mesirii/statuses/65415349511786496</guid>
+      <author>mesirii@twitter.com (Michael Hunger)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a3.twimg.com/profile_images/886989110/portrait_michael_small_normal.jpg"/>
+      <google:image_link>http://a3.twimg.com/profile_images/886989110/portrait_michael_small_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>@peterneubauer Oh, and something seems broken around indices (or I'm stupid). Check out https://gist.github.com/953359 #neo4j</title>
+      <link>http://twitter.com/hult/statuses/65414948368560128</link>
+      <description>&lt;a href=&quot;http://twitter.com/peterneubauer&quot;&gt;@peterneubauer&lt;/a&gt; Oh, and something seems broken around indices (or I&amp;apos;m stupid). Check out &lt;a href=&quot;https://gist.github.com/953359&quot;&gt;https://gist.github.com/953359&lt;/a&gt; &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt;</description>
+      <pubDate>Tue, 03 May 2011 13:58:33 +0000</pubDate>
+      <guid>http://twitter.com/hult/statuses/65414948368560128</guid>
+      <author>hult@twitter.com (Magnus Hult)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a1.twimg.com/profile_images/205394040/profile_normal.jpg"/>
+      <google:image_link>http://a1.twimg.com/profile_images/205394040/profile_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>Testing #Neo4J using #PHP, its slow using the #REST #api, creating 1000 nodes it takes ~3 sec!! Has anyone tested with php-#java bridge?</title>
+      <link>http://twitter.com/oxodesign/statuses/65404176942895104</link>
+      <description>Testing &lt;a href=&quot;http://search.twitter.com/search?q=%23Neo4J&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#Neo4J');&quot;&gt;&lt;b&gt;#Neo4J&lt;/b&gt;&lt;/a&gt; using &lt;a href=&quot;http://search.twitter.com/search?q=%23PHP&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#PHP');&quot;&gt;#PHP&lt;/a&gt;, its slow using the &lt;a href=&quot;http://search.twitter.com/search?q=%23REST&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#REST');&quot;&gt;#REST&lt;/a&gt; &lt;a href=&quot;http://search.twitter.com/search?q=%23api&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#api');&quot;&gt;#api&lt;/a&gt;, creating 1000 nodes it takes ~3 sec!! Has anyone tested with php-#java bridge?</description>
+      <pubDate>Tue, 03 May 2011 13:15:45 +0000</pubDate>
+      <guid>http://twitter.com/oxodesign/statuses/65404176942895104</guid>
+      <author>oxodesign@twitter.com (oxodesign)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a3.twimg.com/profile_images/1318735059/fm_fb_6_normal.jpg"/>
+      <google:image_link>http://a3.twimg.com/profile_images/1318735059/fm_fb_6_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>RT @mesirii: Looking forward to speak at JAX2011 tomorow. topic: graph databases for everyone also spring data fun #neo4j #graphdb</title>
+      <link>http://twitter.com/ewolff/statuses/65379133764546560</link>
+      <description>RT &lt;a href=&quot;http://twitter.com/mesirii&quot;&gt;@mesirii&lt;/a&gt;: Looking forward to speak at JAX2011 tomorow. topic: graph databases for everyone also spring data fun &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt; &lt;a href=&quot;http://search.twitter.com/search?q=%23graphdb&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#graphdb');&quot;&gt;#graphdb&lt;/a&gt;</description>
+      <pubDate>Tue, 03 May 2011 11:36:14 +0000</pubDate>
+      <guid>http://twitter.com/ewolff/statuses/65379133764546560</guid>
+      <author>ewolff@twitter.com (Eberhard Wolff)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a1.twimg.com/profile_images/55233631/portraetminineu_normal.jpg"/>
+      <google:image_link>http://a1.twimg.com/profile_images/55233631/portraetminineu_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>RT @mesirii: Looking forward to speak at JAX2011 tomorow. topic: graph databases for everyone also spring data fun #neo4j &lt;-- go see this!</title>
+      <link>http://twitter.com/jimwebber/statuses/65369669661507584</link>
+      <description>RT &lt;a href=&quot;http://twitter.com/mesirii&quot;&gt;@mesirii&lt;/a&gt;: Looking forward to speak at JAX2011 tomorow. topic: graph databases for everyone also spring data fun &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt; &amp;lt;-- go see this!</description>
+      <pubDate>Tue, 03 May 2011 10:58:38 +0000</pubDate>
+      <guid>http://twitter.com/jimwebber/statuses/65369669661507584</guid>
+      <author>jimwebber@twitter.com (Jim Webber)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a0.twimg.com/profile_images/65422475/cartman2_normal.jpg"/>
+      <google:image_link>http://a0.twimg.com/profile_images/65422475/cartman2_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>Looking forward to speak at JAX2011 tomorow. topic: graph databases for everyone also spring data fun #neo4j #graphdb</title>
+      <link>http://twitter.com/mesirii/statuses/65368406660087808</link>
+      <description>Looking forward to speak at JAX2011 tomorow. topic: graph databases for everyone also spring data fun &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt; &lt;a href=&quot;http://search.twitter.com/search?q=%23graphdb&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#graphdb');&quot;&gt;#graphdb&lt;/a&gt;</description>
+      <pubDate>Tue, 03 May 2011 10:53:37 +0000</pubDate>
+      <guid>http://twitter.com/mesirii/statuses/65368406660087808</guid>
+      <author>mesirii@twitter.com (Michael Hunger)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a3.twimg.com/profile_images/886989110/portrait_michael_small_normal.jpg"/>
+      <google:image_link>http://a3.twimg.com/profile_images/886989110/portrait_michael_small_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>RT @jimwebber: @sriramnrn if you can't attend any #neo4j tutorials by me and @iansrobinson, the materials are freely available online: http://bit.ly/j7v8nS</title>
+      <link>http://twitter.com/sriramnrn/statuses/65250760870477824</link>
+      <description>RT &lt;a href=&quot;http://twitter.com/jimwebber&quot;&gt;@jimwebber&lt;/a&gt;: &lt;a href=&quot;http://twitter.com/sriramnrn&quot;&gt;@sriramnrn&lt;/a&gt; if you can&amp;apos;t attend any &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt; tutorials by me and &lt;a href=&quot;http://twitter.com/iansrobinson&quot;&gt;@iansrobinson&lt;/a&gt;, the materials are freely available online: &lt;a href=&quot;http://bit.ly/j7v8nS&quot;&gt;http://bit.ly/j7v8nS&lt;/a&gt;</description>
+      <pubDate>Tue, 03 May 2011 03:06:08 +0000</pubDate>
+      <guid>http://twitter.com/sriramnrn/statuses/65250760870477824</guid>
+      <author>sriramnrn@twitter.com (Sriram N)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a2.twimg.com/profile_images/1136374245/stargate_normal.jpg"/>
+      <google:image_link>http://a2.twimg.com/profile_images/1136374245/stargate_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>@sriramnrn if you can't attend any #neo4j tutorials by me and @iansrobinson, the materials are freely available online: http://bit.ly/j7v8nS</title>
+      <link>http://twitter.com/jimwebber/statuses/65241667028004865</link>
+      <description>&lt;a href=&quot;http://twitter.com/sriramnrn&quot;&gt;@sriramnrn&lt;/a&gt; if you can&amp;apos;t attend any &lt;a href=&quot;http://search.twitter.com/search?q=%23neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#neo4j');&quot;&gt;&lt;b&gt;#neo4j&lt;/b&gt;&lt;/a&gt; tutorials by me and &lt;a href=&quot;http://twitter.com/iansrobinson&quot;&gt;@iansrobinson&lt;/a&gt;, the materials are freely available online: &lt;a href=&quot;http://bit.ly/j7v8nS&quot;&gt;http://bit.ly/j7v8nS&lt;/a&gt;</description>
+      <pubDate>Tue, 03 May 2011 02:30:00 +0000</pubDate>
+      <guid>http://twitter.com/jimwebber/statuses/65241667028004865</guid>
+      <author>jimwebber@twitter.com (Jim Webber)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a0.twimg.com/profile_images/65422475/cartman2_normal.jpg"/>
+      <google:image_link>http://a0.twimg.com/profile_images/65422475/cartman2_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+    <item>
+      <title>Harvesting the whole #DoctorWho dataset from Wikipedia for the #Neo4j tutorial is really laborious work. 13 hours later, finished, bedtime.</title>
+      <link>http://twitter.com/jimwebber/statuses/65236913791049728</link>
+      <description>Harvesting the whole &lt;a href=&quot;http://search.twitter.com/search?q=%23DoctorWho&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#DoctorWho');&quot;&gt;#DoctorWho&lt;/a&gt; dataset from Wikipedia for the &lt;a href=&quot;http://search.twitter.com/search?q=%23Neo4j&quot; onclick=&quot;pageTracker._setCustomVar(2, 'result_type', 'recent', 3);pageTracker._trackPageview('/intra/hashtag/#Neo4j');&quot;&gt;&lt;b&gt;#Neo4j&lt;/b&gt;&lt;/a&gt; tutorial is really laborious work. 13 hours later, finished, bedtime.</description>
+      <pubDate>Tue, 03 May 2011 02:11:06 +0000</pubDate>
+      <guid>http://twitter.com/jimwebber/statuses/65236913791049728</guid>
+      <author>jimwebber@twitter.com (Jim Webber)</author>
+      <media:content type="image/jpg" width="48" height="48" url="http://a0.twimg.com/profile_images/65422475/cartman2_normal.jpg"/>
+      <google:image_link>http://a0.twimg.com/profile_images/65422475/cartman2_normal.jpg</google:image_link>
+      <twitter:metadata>
+        <twitter:result_type>recent</twitter:result_type>
+      </twitter:metadata>
+    </item>
+  </channel>
+</rss>
