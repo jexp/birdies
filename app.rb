@@ -16,7 +16,7 @@ class App < Sinatra::Base
   get '/' do
     @users = []
     @used_tags = []
-#    @users = @birds.users.collect{ |u| [u.twid, u.outgoing(:TWEETED).size] }.sort { |a,b| b[1] <=> a[1] }
+    @users = @birds.users.collect{ |u| [u.twid, u.outgoing(:TWEETED).size] }.sort { |a,b| b[1] <=> a[1] }
 #    @used_tags = @birds.tags.collect{ |t| [t.name, t.incoming(:TAGGED).size] }.sort { |a,b| b[1] <=> a[1] }
     erb :index
   end
