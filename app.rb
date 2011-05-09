@@ -14,13 +14,21 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    haml :index
+    @users = @birds.users.collect{ |u| [u.twid, u.outgoing(:TWEETED).size] }.sort { |a,b| b[1] <=> a[1] }
+    @used_tags = @birds.tags.collect{ |t| [t.name, t.incoming(:TAGGED).size] }.sort { |a,b| b[1] <=> a[1] }
+    erb :index
   end
 
   post '/update' do
-    @tags = params["tag"]
-    @tags = [@tags] unless @tags.kind_of? Array
-    @result = @birds.update(@tags)
-    haml :update
+    tag = @params["tag"]
+    @tags = []
+    if tag.kind_of? Array
+      @tags + tag
+    else
+      @tags << tag
+    end
+    @tags << "neo4j" unless @tags.include? "neo4j"
+    @added = @birds.update(@tags)
+    redirect "/"
   end
 end

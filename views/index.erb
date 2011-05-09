@@ -1,0 +1,23 @@
+<% unless (@added.nil? || @added.empty?) %>
+ <h3>Added Tweets</h3>
+	<ul>
+		<% @added.each do |i| %>
+			<li><%= i.text %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<form action="/update" method="post">
+  #neo4j AND <input type="text" name="tag" value=""/> <input type="submit" name="update" value="Add Tweets"/>
+</form>
+
+<ul>
+	<% @users.each do |user| %>
+	  <li><%= "@#{user[0]} #{user[1]}"%></li>
+	<% end %>
+</ul>
+<ul>
+	<% @used_tags.each do |tag| %>
+	  <li><%= "##{tag[0]} #{tag[1]}"%></li>
+	<% end %>
+</ul>

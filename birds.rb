@@ -96,6 +96,14 @@ module Birds
     true
   end 
 
+  def users
+     @users.outgoing(:USER)
+  end
+
+  def tags
+     @tags.outgoing(:TAGS)
+  end
+  
   def update(tags)
     search = Twitter::Search.new
     tags.each { |tag| search.hashtag(tag) }
