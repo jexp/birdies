@@ -1,8 +1,7 @@
 require 'rubygems'
 require 'neography'
-require 'rest-client'
 require 'uri'
-require 'feed_tools'
+require 'twitter'
 # >> puts search.fetch_next_page.first.inspect
 #<#Hashie::Rash created_at="Wed, 04 May 2011 12:31:46 +0000" from_user="jessicakilbride" from_user_id=280017273 from_user_id_str="280017273" geo=nil id=65755494752583680 id_str="65755494752583680" iso_language_code="de" metadata=<#Hashie::Rash result_type="recent"> profile_image_url="http://a2.twimg.com/profile_images/1331420611/image_normal.jpg" source="&lt;a href=&quot;http://twitter.com/#!/download/iphone&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;" text="@justinbieber marry me?" to_user="justinbieber" to_user_id=8994366 to_user_id_str="8994366">
 # => "<#Hashie::Rash created_at=\"Wed, 04 May 2011 15:58:36 +0000\" from_user=\"christianphang\" from_user_id=3398193 from_user_id_str=\"3398193\" geo=nil id=65807547021524992 id_str=\"65807547021524992\" iso_language_code=\"eo\" metadata=<#Hashie::Rash result_type=\"recent\"> profile_image_url=\"http://a0.twimg.com/profile_images/286951481/cartman-screw-you-guys_normal.jpg\" source=\"&lt;a href=&quot;http://ubersocial.com&quot; rel=&quot;nofollow&quot;&gt;\\303\\234berSocial&lt;/a&gt;\" text=\"Multi Platform: .NET(C#,F#,IronRuby,...) VS JVM(Java,Clojure,JRuby,...) #jaxcon\" to_user_id=nil to_user_id_str=nil>"
@@ -23,7 +22,7 @@ module Neography
         end
         Node.create_and_index(data,to_index)
       end
-      
+
       def create_and_index(data, to_index)
         node = Neography::Node.create(data)
         return node unless to_index
@@ -34,7 +33,7 @@ module Neography
         end
         node
       end
-      
+
       def find(index, prop, value)
         res = Neography::Rest.new.get_node_index(index,prop,URI.encode(value))
         return nil unless res
@@ -44,69 +43,70 @@ module Neography
   end
 end
 
-include Neography
+module Birds
 
-neo = Rest.new
 
-@root = Node.load(0)
-@tags = Node.obtain({:category => 'TAGS' }, {"category" => [:category] })
-@root.outgoing(:TAGS) << @tags unless @root.rel?(:outgoing, :TAGS)
-@users = Node.obtain({:category => 'USERS' }, {"category" => [:category] })
-@root.outgoing(:USERS) << @users unless @root.rel?(:outgoing, :USERS)
-
-#@tweets = {}
-
-def add_tweet(item)
-  id = item.id
-  puts "Processing #{item.text}"
-  if Node.find("tweets",:id, id)
-    puts "Duplicate"
-    return
-  end
-  text = item.text
-  clean = text.gsub(/(@\w+|https?\S+|#\w+)/,"")
-  tweet = Node.obtain({ :id => id, :date => item.created_at, :text => clean, :raw => text, :link => item.link }, {"tweets" => [:id]})
-
-  twid = item.from_user
-  user = Node.obtain({ :twid => twid, :name => item.author.name }, {"users" => [:twid]})
-  user.name = item.author.name unless user.name
-  @users.outgoing(:USER) << user if @users.rels(:USER).outgoing.to_other(user).empty?
-  user.outgoing(:TWEETED) << tweet
-  
-  tokens = text.gsub(/(@\w+|https?\S+|#\w+)/).each do |t|
-    puts "token #{t}"
-    if t =~ /^@.+/
-        t = t[1..-1]
-        other = Node.obtain({ :twid => t }, {"users" => [:twid]})
-        @users.outgoing(:USER) << other if @users.rels(:USER).outgoing.to_other(other).empty?
-        user.outgoing(:KNOWS) << other if !(user.eql? other) && user.rels(:KNOWS).outgoing.to_other(other).empty?
-        tweet.outgoing(:MENTIONS) << other 
+  class Birds
+    include Neography
+    def initialize
+      @root = Node.load(0)
+      @tags = Node.obtain({:category => 'TAGS' }, {"category" => [:category] })
+      @root.outgoing(:TAGS) << @tags unless @root.rel?(:outgoing, :TAGS)
+      @users = Node.obtain({:category => 'USERS' }, {"category" => [:category] })
+      @root.outgoing(:USERS) << @users unless @root.rel?(:outgoing, :USERS)
     end
-    if t =~ /https?:.+/
-      link = Node.obtain({ :url => t }, {"links" => [:url]}) 
-      tweet.outgoing(:LINKS) << link
-    end
-    if t =~ /#.+/
-      t = t[1..-1]
-      tag = Node.obtain({ :name => t }, {"tags" => [:name]})
-      tweet.outgoing(:TAGGED) << tag
-      user.outgoing(:USED) << tag
-      @tags.outgoing(:TAGS) << tag if @tags.rels(:TAGS).outgoing.to_other(tag).empty?
-    end
-  end
-end 
 
-uri = $ARGV[0] || 'feed://search.twitter.com/search.rss?q=%23jaxcon'
-#uri = 'file:///Users/mh/ruby/birds/search.rss'
-#uri = 'file:///Users/mh/ruby/birds/test.rss'
 
-while true 
-  puts "Fetching #{uri}"
-  begin 
-    feed = FeedTools::Feed.open( uri ) #feed.title
-    feed.items.each { |item| add_tweet(item) }
-  rescue => e
-    puts e
+    def add_tweet(item)
+      id = item.id_str
+      text = item.text
+      puts "Processing \"#{text}\""
+      if Node.find("tweets",:id, id)
+        puts "Duplicate"
+        return false
+      end
+      short = text.gsub(/(@\w+|https?\S+|#\w+)/,"")[0..30]
+      tweet = Node.create_and_index({ :id => id, :date => item.created_at, :text => text,  :short => short, :link => "http://twitter.com/#{item.from_user}/statuses/#{id}" }, {"tweets" => [:id]})
+
+      twid = item.from_user
+      user = Node.obtain({ :twid => twid }, {"users" => [:twid]})
+      @users.outgoing(:USER) << user if @users.rels(:USER).outgoing.to_other(user).empty?
+      user.outgoing(:TWEETED) << tweet
+
+      tokens = text.gsub(/(@\w+|https?\S+|#\w+)/).each do |t|
+        if t =~ /^@.+/
+          t = t[1..-1]
+          other = Node.obtain({ :twid => t }, {"users" => [:twid]})
+          @users.outgoing(:USER) << other if @users.rels(:USER).outgoing.to_other(other).empty?
+          user.outgoing(:KNOWS) << other if !(user.eql? other) && user.rels(:KNOWS).outgoing.to_other(other).empty?
+          tweet.outgoing(:MENTIONS) << other 
+        end
+        if t =~ /https?:.+/
+          link = Node.obtain({ :url => t }, {"links" => [:url]}) 
+          tweet.outgoing(:LINKS) << link
+        end
+        if t =~ /#.+/
+          t = t[1..-1]
+          tag = Node.obtain({ :name => t }, {"tags" => [:name]})
+          tweet.outgoing(:TAGGED) << tag
+          user.outgoing(:USED) << tag
+          @tags.outgoing(:TAGS) << tag if @tags.rels(:TAGS).outgoing.to_other(tag).empty?
+        end
+      end
+    true
+  end 
+
+  def update(tags)
+    search = Twitter::Search.new
+    tags.each { |tag| search.hashtag(tag) }
+    result = []
+    all_new = true
+    while all_new
+      all_new = search.all? { | item | add_tweet(item) && result << item } 
+      search.fetch_next_page
+    end
+    result
   end
-  sleep 120
+
+  end
 end
