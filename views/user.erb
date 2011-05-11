@@ -1,0 +1,32 @@
+<h2>@<%= @user.twid %></h2	>
+<p>
+	<%= @user.bio %>
+</p>
+
+<h3>Tweets</h3>
+	<ul>
+		<% @user.outgoing(:TWEETED).each do |i| %>
+			<li><%= i.text %></li>
+		<% end %>
+	</ul>
+
+<h3>Follows</h3>
+	<ul>
+		<% @user.outgoing(:FOLLOWS).each do |u| %>
+			<li><a href="/user/<%= u.twid %>">@<%= u.twid %></a></li>
+		<% end %>
+	</ul>
+
+<h3>Knows</h3>
+	<ul>
+		<% @user.outgoing(:KNOWS).each do |u| %>
+		<li><a href="/user/<%= u.twid %>">@<%= u.twid %></a></li>
+		<% end %>
+	</ul>
+
+<h3>Tags</h3>
+	<ul>
+		<% @user.outgoing(:USED).each do |tag| %>
+		<li><a href="/tag/<%= tag.name %>">#<%= tag.name %></a></li>
+		<% end %>
+	</ul>

@@ -14,6 +14,7 @@ GEM
     httparty (0.7.7)
       crack (= 0.1.8)
     json (1.5.1)
+    mime-types (1.16)
     multi_json (1.0.0)
     multi_xml (0.2.2)
     multipart-post (1.1.0)
@@ -23,6 +24,8 @@ GEM
     rack (1.2.2)
     rash (0.3.0)
       hashie (~> 1.0.0)
+    rest-client (1.6.1)
+      mime-types (>= 1.16)
     simple_oauth (0.1.4)
     sinatra (1.1.2)
       rack (~> 1.1)
@@ -44,5 +47,6 @@ DEPENDENCIES
   haml (= 3.0.25)
   json
   neography (= 0.0.13)
+  rest-client
   sinatra (= 1.1.2)
   twitter

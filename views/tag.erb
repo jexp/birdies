@@ -1,0 +1,16 @@
+<h2>#<%= @tag.name %></h2>
+
+<h3>Tweets</h3>
+	<ul>
+		<% @tag.incoming(:TAGGED).each do |tweet| %>
+			<% twid = tweet.incoming(:TWEETED).first.twid %>
+			<li><a href="/user/<%= twid %>">@<%= twid %></a>: <%= tweet.text %></li>
+		<% end %>
+	</ul>
+
+<h3>Used By</h3>
+	<ul>
+		<% @tag.incoming(:USED).collect{ |u| u.twid }.uniq.sort.each do |twid| %>
+			<li><a href="/user/<%= twid %>">@<%= twid %></a></li>
+		<% end %>
+	</ul>

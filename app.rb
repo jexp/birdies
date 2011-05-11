@@ -14,10 +14,36 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    @used_tags = []
-    @users = @birds.users.collect{ |u| [u.twid, u.outgoing(:TWEETED).size] }.sort { |a,b| b[1] <=> a[1] }
-#    @used_tags = @birds.tags.collect{ |t| [t.name, t.incoming(:TAGGED).size] }.sort { |a,b| b[1] <=> a[1] }
     erb :index
+  end
+
+  get '/users' do
+    content_type :json
+    @birds.users.collect{ |u| { :name => "@"+u.twid, :link => "/user/#{u.twid}", :value => u.outgoing(:TWEETED).size }}.to_json
+  end
+
+  get '/user/:id' do |id|
+    # user with :KNOWS, :TWEETED, :USED
+    @user = @birds.user(id) # sunburst, social graph
+    erb :user
+  end
+
+  get '/tag/:id' do |id|
+    @tag = @birds.tag(id)
+    erb :tag
+  end
+  
+  get '/admin/update' do
+    @birds.update_users(@birds.users).inspect
+  end
+  
+  get '/info/:twids' do |twids|
+    @birds.sg_info(twids.split(',')).inspect
+  end
+
+  get '/tags' do
+    content_type :json
+    @birds.tags.collect{ |t| { :name => "#"+t.name, :link => "/tag/#{t.name}", :value => t.incoming(:TAGGED).size } }.to_json
   end
 
   post '/update' do

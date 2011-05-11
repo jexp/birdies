@@ -11,13 +11,18 @@
   #neo4j AND <input type="text" name="tag" value=""/> <input type="submit" name="update" value="Add Tweets"/>
 </form>
 
-<ul>
-	<% @users.each do |user| %>
-	  <li><%= "@#{user[0]} #{user[1]}"%></li>
-	<% end %>
-</ul>
-<ul>
-	<% @used_tags.each do |tag| %>
-	  <li><%= "##{tag[0]} #{tag[1]}"%></li>
-	<% end %>
-</ul>
+<div id="users" style="width:500px;height:500px;">
+</div>
+<div id="tags" style="width:500px;height:500px;">
+</div>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	$.getJSON('/users', function(data) {
+		render(data,'users');
+	});
+	$.getJSON('/tags', function(data) {
+		render(data,'tags');
+	});
+});
+</script>
