@@ -171,7 +171,8 @@ module Birds
     result = []
     all_new = true
     while all_new
-      all_new = search.all? { | item | add_tweet(item) && result << item } 
+      results = search.collect
+      all_new = !results.empty? && results.all? { | item | add_tweet(item) && result << item }
       search.fetch_next_page
     end
     result
