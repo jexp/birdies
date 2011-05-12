@@ -4,6 +4,7 @@ require 'uri'
 require 'twitter'
 require 'json'
 require 'rest-client'
+
 # >> puts search.fetch_next_page.first.inspect
 #<#Hashie::Rash created_at="Wed, 04 May 2011 12:31:46 +0000" from_user="jessicakilbride" from_user_id=280017273 from_user_id_str="280017273" geo=nil id=65755494752583680 id_str="65755494752583680" iso_language_code="de" metadata=<#Hashie::Rash result_type="recent"> profile_image_url="http://a2.twimg.com/profile_images/1331420611/image_normal.jpg" source="&lt;a href=&quot;http://twitter.com/#!/download/iphone&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;" text="@justinbieber marry me?" to_user="justinbieber" to_user_id=8994366 to_user_id_str="8994366">
 # => "<#Hashie::Rash created_at=\"Wed, 04 May 2011 15:58:36 +0000\" from_user=\"christianphang\" from_user_id=3398193 from_user_id_str=\"3398193\" geo=nil id=65807547021524992 id_str=\"65807547021524992\" iso_language_code=\"eo\" metadata=<#Hashie::Rash result_type=\"recent\"> profile_image_url=\"http://a0.twimg.com/profile_images/286951481/cartman-screw-you-guys_normal.jpg\" source=\"&lt;a href=&quot;http://ubersocial.com&quot; rel=&quot;nofollow&quot;&gt;\\303\\234berSocial&lt;/a&gt;\" text=\"Multi Platform: .NET(C#,F#,IronRuby,...) VS JVM(Java,Clojure,JRuby,...) #jaxcon\" to_user_id=nil to_user_id_str=nil>"
@@ -69,7 +70,7 @@ module Birds
         return false
       end
       short = text.gsub(/(@\w+|https?\S+|#\w+)/,"")[0..30]
-      tweet = Node.create_and_index({ :id => id, :date => item.created_at, :text => text,  :short => short, :link => "http://twitter.com/#{item.from_user}/statuses/#{id}" }, {"tweets" => [:id]})
+      tweet = Node.create_and_index({ :id => id, :date => Time.parse(item.created_at).to_i, :text => text,  :short => short, :link => "http://twitter.com/#{item.from_user}/statuses/#{id}" }, {"tweets" => [:id]})
 
       user = Node.obtain({ :twid => twid }, {"users" => [:twid]})
       @users.outgoing(:USER) << user if @users.rels(:USER).outgoing.to_other(user).empty?
