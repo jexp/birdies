@@ -32,6 +32,11 @@ class App < Sinatra::Base
     @tag = @birds.tag(id)
     erb :tag
   end
+
+  get '/admin/tweettime' do
+    @birds.users.each { |u| u.outgoing(:TWEETED).each { |t| t.date = Time.parse(t.date).to_i if t.date.kind_of? String }}
+    "Updated tweets"
+  end
   
   get '/admin/update' do
     @birds.update_users(@birds.users).inspect
