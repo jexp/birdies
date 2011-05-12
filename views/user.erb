@@ -5,8 +5,8 @@
 
 <h3>Tweets</h3>
 	<ul>
-		<% @user.outgoing(:TWEETED).each do |i| %>
-			<li><%= i.text %></li>
+		<% @user.outgoing(:TWEETED).sort { |t1,t2| t2.date <=> t1.date }.each do |i| %>
+			<li><%= i.text %><!--<%= Time.at(i.date) %>--></li>
 		<% end %>
 	</ul>
 
