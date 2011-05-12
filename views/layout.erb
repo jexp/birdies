@@ -2,7 +2,43 @@
 <head><title>Birds powered by Neo4j</title>
 <script src="/js/jquery.min.js" type="text/javascript"></script>
 <script src="/js/protovis-r3.2.js" type="text/javascript"></script>
-<script src="/js/script.js" type="text/javascript"></script>
+<script src="/js/script.js" type="text/javascript+protovis"></script>
+<script type="text/javascript+protovis">
+function render(data,canvas) {
+
+	var classes = pv.nodes(data);
+
+	var format = pv.Format.number();
+
+	var vis = new pv.Panel()
+//	.width(document.body.clientWidth)
+//	.height(document.body.clientHeight)
+//	.event("mousedown", pv.Behavior.pan())
+	.event("mousewheel", pv.Behavior.zoom())
+	.canvas(canvas);
+
+	var pack = vis.add(pv.Layout.Pack)
+	.top(-50)
+	.bottom(-50)
+	.nodes(classes)
+	.size(function(d) (d.nodeValue.value+1)*1000)
+	.spacing(0)
+	.order(null)
+	.node.add(pv.Dot)
+	.event("click", function(d) self.location.href=d.nodeValue.link)
+//	.event("mouseover", function() this.fillStyle("orange"))
+//	.event("mouseout", function() this.fillStyle(undefined))
+	.fillStyle(pv.Colors.category19().by(function(d) d.nodeValue.name))
+	.strokeStyle(function() this.fillStyle().darker())
+	.visible(function(d) d.parentNode)
+	.title(function(d) d.nodeValue.name + ": " + format(d.nodeValue.value))
+	.anchor("center").add(pv.Label)
+	.text(function(d) d.nodeValue.name.substring(0, d.nodeValue.value*4))
+	;
+
+	vis.render();
+}
+</script>
 </head>
 <body>
 	<h1><a href="/">Birds</a> powered by Neo4j</h1>
