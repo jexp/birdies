@@ -67,7 +67,7 @@ module Birds
       puts "Processing \"#{text}\""
       if Node.find("tweets",:id, id)
         puts "Duplicate"
-        return false
+        return false 
       end
       short = text.gsub(/(@\w+|https?\S+|#\w+)/,"")[0..30]
       tweet = Node.create_and_index({ :id => id, :date => Time.parse(item.created_at).to_i, :text => text,  :short => short, :link => "http://twitter.com/#{item.from_user}/statuses/#{id}" }, {"tweets" => [:id]})

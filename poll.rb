@@ -8,11 +8,12 @@ Neography::Config.username = ENV['NEO4J_LOGIN']
 Neography::Config.password = ENV['NEO4J_PASSWORD']
 
 require 'birds'
+puts ARGV
 
 while true 
   birds = Birds::Birds.new
   begin 
-    birds.update(["jaxcon"])
+  birds.update(ARGV.length > 0 ? ARGV : ["springone2gx"])
   rescue => e
     puts e
   end
