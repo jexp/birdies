@@ -4,13 +4,14 @@ require 'uri'
 require 'birds'
 
 class App < Sinatra::Base
-  set :haml, :format => :html5 
+  set :erb, :format => :html5 
   set :app_file, __FILE__
 
   include Birds
 
-  before do
+  configure do
     @birds = Birds.new
+puts "configure "+@birds.inspect
   end
 
   get '/' do
@@ -31,11 +32,6 @@ class App < Sinatra::Base
   get '/tag/:id' do |id|
     @tag = @birds.tag(id)
     erb :tag
-  end
-
-  get '/admin/tweettime' do
-    @birds.users.each { |u| u.outgoing(:TWEETED).each { |t| t.date = Time.parse(t.date).to_i if t.date.kind_of? String }}
-    "Updated tweets"
   end
   
   get '/admin/update' do

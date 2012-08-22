@@ -51,85 +51,143 @@ module Birds
 
   class Birds
     include Neography
+
+    TWEETS_INDEX = "tweets"
+    CATEGORY_INDEX = "category"
+    TAG_INDEX = "tags"
+    USER_INDEX = "users"
+    LINK_INDEX = "links"
+
     def initialize
       @root = Node.load(0)
-      @tags = Node.obtain({:category => 'TAGS' }, {"category" => [:category] })
+      @tags = Node.obtain({:category => 'TAGS' }, {CATEGORY_INDEX => [:category] })
       @root.outgoing(:TAGS) << @tags unless @root.rel?(:outgoing, :TAGS)
-      @users = Node.obtain({:category => 'USERS' }, {"category" => [:category] })
+      @users = Node.obtain({:category => 'USERS' }, {CATEGORY_INDEX => [:category] })
       @root.outgoing(:USERS) << @users unless @root.rel?(:outgoing, :USERS)
     end
+
 
 
     def add_tweet(item)
       id = item.id_str
       twid = item.from_user.downcase
       text = item.text
-      puts "Processing \"#{text}\""
-      if Node.find("tweets",:id, id)
+      puts "Processing @#{twid}: \"#{text}\""
+      if Node.find(TWEETS_INDEX,:id, id)
         puts "Duplicate"
         return false 
       end
-      short = text.gsub(/(@\w+|https?\S+|#\w+)/,"")[0..30]
-      tweet = Node.create_and_index({ :id => id, :date => Time.parse(item.created_at).to_i, :text => text,  :short => short, :link => "http://twitter.com/#{item.from_user}/statuses/#{id}" }, {"tweets" => [:id]})
+      tweet = create_tweet(id, item, text)
 
-      user = Node.obtain({ :twid => twid }, {"users" => [:twid]})
-      @users.outgoing(:USER) << user if @users.rels(:USER).outgoing.to_other(user).empty?
+      user = obtain_user(twid)
       user.outgoing(:TWEETED) << tweet
 
-      tokens = text.gsub(/(@\w+|https?\S+|#\w+)/).each do |t|
-        if t =~ /^@.+/
-          t = t[1..-1].downcase
-          other = Node.find("users",:twid,t)
-          unless other
-            other = Node.create_and_index({ :twid => t }, {"users" => [:twid]})
-          end
-          user.outgoing(:KNOWS) << other if !(twid.eql?(t)) && user.rels(:KNOWS).outgoing.to_other(other).empty?
-          tweet.outgoing(:MENTIONS) << other 
-        end
-        if t =~ /https?:.+/
-          link = Node.obtain({ :url => t }, {"links" => [:url]}) 
-          tweet.outgoing(:LINKS) << link
-        end
-        if t =~ /#.+/
-          t = t[1..-1].downcase
-          tag = Node.find("tags",:name,t)
-          unless tag
-            tag = Node.create_and_index({ :name => t }, {"tags" => [:name]})
-            @tags.outgoing(:TAGS) << tag            
-          end
-          tweet.outgoing(:TAGGED) << tag
-          user.outgoing(:USED) << tag if user.rels(:USED).outgoing.to_other(tag).empty?
-        end
+      text.gsub(/(@\w+|https?\S+|#\w+)/).each do |token|
+        handle_mention(token, tweet, twid, user) || handle_link(token, tweet) || handle_tag(token, tweet, user)
       end
     true
-  end 
-
-  def sg_info(twids)
-    return {} if twids.nil? || twids.empty?
-    params = twids[0..49].collect { |twid| "http://twitter.com/#{twid}" }
-    response = RestClient.get "http://socialgraph.apis.google.com/lookup?q=#{params.join(',')}&edo=1&callback=?"
-    return {} unless response.code == 200
-    nodes = JSON.parse(response.to_str)['nodes']
-    result = params.collect do |p| 
-      info = nodes[p]
-      next [] unless info
-      contacts = info['nodes_referenced']
-      following = contacts.collect { |uri,type| uri =~ /http:\/\/twitter.com\/(\w+)/ && $1 }.find_all{ |v| v }
-      p =~ /http:\/\/twitter.com\/(\w+)/
-      [ $1, {'bio' => info['attributes']['bio'], 'follows' => following }]
-    end
-    Hash[result].merge(sg_info(twids[50..-1]))
   end
+
+    def handle_tag(token, tweet, user)
+      return false unless token =~ /#.+/
+      token = token[1..-1].downcase
+      tag = Node.find(TAG_INDEX, :name, token)
+      unless tag
+        tag = Node.create_and_index({:name => token}, {TAG_INDEX => [:name]})
+        @tags.outgoing(:TAGS) << tag
+      end
+      tweet.outgoing(:TAGGED) << tag
+      user.outgoing(:USED) << tag if user.rels(:USED).outgoing.to_other(tag).empty?
+      true
+    end
+
+    def handle_link(token, tweet)
+      return false unless token =~ /https?:.+/
+      link = Node.obtain({:url => token}, {LINK_INDEX => [:url]})
+      tweet.outgoing(:LINKS) << link
+      true
+    end
+
+    def handle_mention(token, tweet, twid, user)
+      return false unless token =~ /^@.+/
+      token = token[1..-1].downcase
+      other = Node.find(USER_INDEX, :twid, token)
+      unless other
+        other = Node.create_and_index({:twid => token}, {USER_INDEX => [:twid]})
+      end
+      user.outgoing(:KNOWS) << other if !(twid.eql?(token)) && user.rels(:KNOWS).outgoing.to_other(other).empty?
+      tweet.outgoing(:MENTIONS) << other
+      true
+    end
+
+    def create_tweet(id, item, text)
+      short = text.gsub(/(@\w+|https?\S+|#\w+)/,"")[0..30]
+      time = Time.parse(item.created_at).to_i
+      user_link = "http://twitter.com/#{item.from_user}/statuses/#{id}"
+      Node.create_and_index({:id => id, :date => time, :text => text, :short => short, :link => user_link}, {TWEETS_INDEX => [:id]})
+    end
 
   def obtain_user(twid)
-    other = Node.find("users",:twid,twid)
-    return other if other
-    other = Node.create_and_index({ :twid => twid }, {"users" => [:twid]})
-    @users.outgoing(:USER) << other
-    other
+    # start user=node:node_auto_index(twid={twid}) return user
+    #
+    user = Node.find(USER_INDEX,:twid,twid)
+    return user if user
+    user = Node.create_and_index({ :twid => twid }, {USER_INDEX => [:twid]})
+    @users.outgoing(:USER) << user if @users.rels(:USER).outgoing.to_other(user).empty?
+    user
   end
 
-  # todo rewrite to sg_user_info and sg_followers for a list of users
+    def user(id)
+      Node.find(USER_INDEX,:twid, id)
+    end
+
+    def tag(id)
+      Node.find(TAG_INDEX,:name, id)
+    end
+
+    def users
+      @users.outgoing(:USER)
+    end
+
+    def tags
+      @tags.outgoing(:TAGS)
+    end
+
+    def update(tags)
+      search = Twitter::Search.new
+      puts tags.inspect
+      tags.each { |tag| search.hashtag(tag) }
+      result = []
+      all_new = true
+      while all_new
+        results = search.collect
+        all_new = results.size>0 && results.all? { | item | add_tweet(item) && result << item }
+        search.fetch_next_page
+      end
+      result.size
+    end
+
+=begin
+Google discontinued the social graph API :(
+http://socialgraph.apis.google.com/lookup?q=http://twitter.com/mesirii&edo=1&callback=?
+    def sg_info(twids)
+      return {} if twids.nil? || twids.empty?
+      params = twids[0..49].collect { |twid| "http://twitter.com/#{twid}" }
+      response = RestClient.get "http://socialgraph.apis.google.com/lookup?q=#{params.join(',')}&edo=1&callback=?"
+      return {} unless response.code == 200
+      nodes = JSON.parse(response.to_str)['nodes']
+      result = params.collect do |p|
+        info = nodes[p]
+        next [] unless info
+        contacts = info['nodes_referenced']
+        following = contacts.collect { |uri,type| uri =~ /http:\/\/twitter.com\/(\w+)/ && $1 }.find_all{ |v| v }
+        p =~ /http:\/\/twitter.com\/(\w+)/
+        [ $1, {'bio' => info['attributes']['bio'], 'follows' => following }]
+      end
+      Hash[result].merge(sg_info(twids[50..-1]))
+    end
+
+    # todo rewrite to sg_user_info and sg_followers for a list of users
   def update_users(users)
     to_update = Hash[users.collect{ |u| u.bio ? false : [u.twid, u] }.find_all{ |v| v }]
     info = sg_info(to_update.keys)
@@ -140,7 +198,7 @@ module Birds
       followers = Hash[user.outgoing(:FOLLOWS).collect { | u | [u.twid,1] }]
       my_info['follows'].each do |twid|
         next if followers[twid] || user_twid.eql?(twid)
-        other = Node.obtain({ :twid => twid }, {"users" => [:twid]})
+        other = Node.obtain({ :twid => twid }, {USER_INDEX => [:twid]})
         user.outgoing(:FOLLOWS) << other
         followers[twid]=1
       end
@@ -149,34 +207,7 @@ module Birds
     to_update.keys
   end
 
-  def user(id)
-    Node.find("users",:twid, id)
-  end
-  def tag(id)
-    Node.find("tags",:name, id)
-  end
-  
-  def users
-     @users.outgoing(:USER)
-  end
-
-  def tags
-     @tags.outgoing(:TAGS)
-  end
-  
-  def update(tags)
-    search = Twitter::Search.new
-    puts tags.inspect
-    tags.each { |tag| search.hashtag(tag) }
-    result = []
-    all_new = true
-    while all_new
-      results = search.collect
-      all_new = !results.empty? && results.all? { | item | add_tweet(item) && result << item }
-      search.fetch_next_page
-    end
-    result
-  end
+=end
 
   end
 end

@@ -11,14 +11,14 @@ GEM
       faraday (~> 0.6.0)
     haml (3.0.25)
     hashie (1.0.0)
-    httparty (0.7.7)
+    httparty (0.7.8)
       crack (= 0.1.8)
     json (1.5.1)
     mime-types (1.16)
     multi_json (1.0.0)
     multi_xml (0.2.2)
     multipart-post (1.1.0)
-    neography (0.0.13)
+    neography (0.0.15)
       httparty (~> 0.7.3)
       json
     rack (1.2.2)
@@ -46,7 +46,7 @@ PLATFORMS
 DEPENDENCIES
   haml (= 3.0.25)
   json
-  neography (= 0.0.13)
+  neography (= 0.0.15)
   rest-client
   sinatra (= 1.1.2)
   twitter
